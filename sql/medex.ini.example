@@ -1,0 +1,19 @@
+# This is example, copy it to $HOME and rename to medex.ini
+
+# Root user params
+POSTGRES_USER=postgres
+POSTGRES_PASS=
+
+# DB host
+POSTGRES_HOST=192.168.0.123
+
+# Database params
+MEDEX_DBNAME=FILM
+MEDEX_USER=test
+MEDEX_PASS=123
+
+# Dir to backup
+BACKUP_STORAGE_DIR='/home/kenny/pg_bak'
+
+# Dir for loading dump
+LOAD_DIR='dir'
