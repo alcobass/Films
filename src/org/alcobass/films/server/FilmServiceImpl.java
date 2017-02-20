@@ -1,7 +1,13 @@
 package org.alcobass.films.server;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.alcobass.films.client.FilmService;
-import org.alcobass.films.shared.FieldVerifier;
+import org.alcobass.films.shared.DictionaryCacheData;
+import org.alcobass.films.shared.beans.CountryBean;
+import org.alcobass.films.shared.beans.GenreBean;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
@@ -11,38 +17,37 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class FilmServiceImpl extends RemoteServiceServlet implements
         FilmService {
 
-    public String greetServer(String input) throws IllegalArgumentException {
-        // Verify that the input is valid. 
-        if (!FieldVerifier.isValidName(input)) {
-            // If the input is not valid, throw an IllegalArgumentException back to
-            // the client.
-            throw new IllegalArgumentException(
-                    "Name must be at least 4 characters long");
-        }
-
-        String serverInfo = getServletContext().getServerInfo();
-        String userAgent = getThreadLocalRequest().getHeader("User-Agent");
-
-        // Escape data from the client to avoid cross-site script vulnerabilities.
-        input = escapeHtml(input);
-        userAgent = escapeHtml(userAgent);
-
-        return "Hello, " + input + "!<br><br>I am running " + serverInfo
-                + ".<br><br>It looks like you are using:<br>" + userAgent;
+    @Override
+    public DictionaryCacheData loadDictionaryCache() {
+        DictionaryCacheData res = new DictionaryCacheData();
+        
+        // Generate countries
+        List<CountryBean> countryList = new ArrayList<CountryBean>();
+        countryList.add(new CountryBean(1, "Россия"));
+        countryList.add(new CountryBean(2, "Германия"));
+        countryList.add(new CountryBean(3, "США"));
+        res.setCountryList(countryList);
+        
+        // Generate genres       
+        List<GenreBean> genreList = new ArrayList<GenreBean>();
+        genreList.add(new GenreBean(1, "Боевик"));
+        genreList.add(new GenreBean(2, "Комедия"));
+        genreList.add(new GenreBean(3, "Мелодрама"));
+        res.setGenreList(genreList);
+        
+        return res;
     }
 
-    /**
-     * Escape an html string. Escaping data received from the client helps to
-     * prevent cross-site script vulnerabilities.
-     * 
-     * @param html the html string to escape
-     * @return the escaped string
-     */
-    private String escapeHtml(String html) {
-        if (html == null) {
-            return null;
-        }
-        return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(
-                ">", "&gt;");
+    @Override
+    public GenreBean getGenreBeanFake() {
+        // TODO Auto-generated method stub
+        return null;
     }
+
+    @Override
+    public CountryBean getCountryBeanFake() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

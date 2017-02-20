@@ -1,7 +1,9 @@
 package org.alcobass.films.client;
 
+import org.alcobass.films.shared.DictionaryCacheData;
+
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.GWT;import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -19,8 +21,26 @@ public class Films implements EntryPoint {
      */
     public void onModuleLoad() {
 
+        greetingService.loadDictionaryCache(new AsyncCallback<DictionaryCacheData>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+                RootPanel.get().add(new Label("This is films application"));
+                
+            }
+
+            @Override
+            public void onSuccess(DictionaryCacheData result) {
+                ClientDictionaryCache.init(result);
+                RootPanel.get().add(new Label("This is films application"));
+                
+            }
+        });
         // Add the nameField and sendButton to the RootPanel
         // Use RootPanel.get() to get the entire body element
         RootPanel.get().add(new Label("This is films application"));
+        
+        
+        
     }
 }

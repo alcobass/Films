@@ -1,5 +1,9 @@
 package org.alcobass.films.client;
 
+import org.alcobass.films.shared.DictionaryCacheData;
+import org.alcobass.films.shared.beans.CountryBean;
+import org.alcobass.films.shared.beans.GenreBean;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -8,5 +12,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("greet")
 public interface FilmService extends RemoteService {
-    String greetServer(String name) throws IllegalArgumentException;
+    public DictionaryCacheData loadDictionaryCache();
+    
+    public GenreBean getGenreBeanFake();
+    public CountryBean getCountryBeanFake();
 }
