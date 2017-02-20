@@ -1,0 +1,3 @@
+DROP USER IF EXISTS test;
+CREATE USER test;
+
