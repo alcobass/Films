@@ -25,7 +25,7 @@ public class Films implements EntryPoint {
 
             @Override
             public void onFailure(Throwable caught) {
-                RootPanel.get().add(new Label("This is films application"));
+                RootPanel.get().add(new Label("This is films application. error"));
                 
             }
 
@@ -36,11 +36,6 @@ public class Films implements EntryPoint {
                 
             }
         });
-        // Add the nameField and sendButton to the RootPanel
-        // Use RootPanel.get() to get the entire body element
-        RootPanel.get().add(new Label("This is films application"));
-        
-        
         
     }
 }
