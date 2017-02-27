@@ -1,5 +1,6 @@
 package org.alcobass.films.client;
 
+import org.alcobass.films.client.gui.MainPanel;
 import org.alcobass.films.shared.DictionaryCacheData;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -32,7 +33,7 @@ public class Films implements EntryPoint {
             @Override
             public void onSuccess(DictionaryCacheData result) {
                 ClientDictionaryCache.init(result);
-                RootPanel.get().add(new Label("This is films application"));
+                RootPanel.get().add(new MainPanel());
                 
             }
         });
