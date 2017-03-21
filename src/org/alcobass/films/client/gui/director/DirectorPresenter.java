@@ -3,9 +3,11 @@ package org.alcobass.films.client.gui.director;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.alcobass.films.client.Films;
 import org.alcobass.films.shared.beans.DirectorBean;
 
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class DirectorPresenter {
     
@@ -31,21 +33,28 @@ public class DirectorPresenter {
         display.setDirectorDeleteHandler(new DirectorDeleteHandler() {
             
             @Override
-            public void onDirectorAdd(int index) {
+            public void onDirectorDelete(int index) {
                 Window.alert("Delete clicked on " + String.valueOf(index));
             }
         });
     }
     
     public void loadData() {
-        List<DirectorBean> newList = new ArrayList<DirectorBean>();
-        newList.add(new DirectorBean(1, "Hithcock"));
-        newList.add(new DirectorBean(2, "Lucas"));
-        newList.add(new DirectorBean(3, "Михалков"));
-        
-        loadedList = newList;
-        
-        display.setData(loadedList);
-        display.redraw();
+        Films.getService().getDirectorList(new AsyncCallback<List<DirectorBean>>() {
+            
+            @Override
+            public void onSuccess(List<DirectorBean> result) {
+                loadedList = result;
+                
+                display.setData(loadedList);
+                display.redraw();
+            }
+            
+            @Override
+            public void onFailure(Throwable caught) {
+                // TODO Auto-generated method stub
+                
+            }
+        });
     }
 }

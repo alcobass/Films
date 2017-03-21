@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.alcobass.films.server.db.mappers.DirectorMapper">
+
+<resultMap type="org.alcobass.films.shared.beans.DirectorBean" id="DirectorMap">
+   <result column="ID" property="id" />
+   <result column="NAME" property="name" />
+   <result column="COUNTRY_ID" property="countryId" />
+</resultMap>  
+
+
+<select id="getDirectorList" resultMap="DirectorMap">
+SELECT ID,
+       NAME,
+       COUNTRY_ID
+  FROM DIRECTOR
+ ORDER BY ID                
+</select>
+
+</mapper>

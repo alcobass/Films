@@ -8,6 +8,7 @@ import org.alcobass.films.client.FilmService;
 import org.alcobass.films.server.db.DBInterface;
 import org.alcobass.films.shared.DictionaryCacheData;
 import org.alcobass.films.shared.beans.CountryBean;
+import org.alcobass.films.shared.beans.DirectorBean;
 import org.alcobass.films.shared.beans.GenreBean;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -62,6 +63,11 @@ public class FilmServiceImpl extends RemoteServiceServlet implements
     public CountryBean getCountryBeanFake() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public List<DirectorBean> getDirectorList() {
+        return Server.getDb().getDirectorList();
     }
 
 }

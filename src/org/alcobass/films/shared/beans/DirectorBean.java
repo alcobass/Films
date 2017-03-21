@@ -5,16 +5,13 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 public class DirectorBean implements IsSerializable {
     private Integer id;
     private String name;
+    private Integer countryId;
     
     
     public DirectorBean() {
         super();
     }
-    public DirectorBean(Integer id, String name) {
-        super();
-        this.id = id;
-        this.name = name;
-    }
+
     public Integer getId() {
         return id;
     }
@@ -30,6 +27,12 @@ public class DirectorBean implements IsSerializable {
     @Override
     public String toString() {
         return "DirectorBean [id=" + id + ", name=" + name + "]";
+    }
+    public Integer getCountryId() {
+        return countryId;
+    }
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
     }
     
 }

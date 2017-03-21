@@ -95,7 +95,7 @@ public class DirectorView extends Composite implements DirectorDisplay{
             @Override
             public void onClick(ClickEvent event) {
                 if (directorDeleteHandler != null) {
-                    directorDeleteHandler.onDirectorAdd(dataTable.getKeyboardSelectedRow());
+                    directorDeleteHandler.onDirectorDelete(dataTable.getKeyboardSelectedRow());
                 }
             }
         });

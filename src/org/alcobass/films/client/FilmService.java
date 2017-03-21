@@ -1,7 +1,10 @@
 package org.alcobass.films.client;
 
+import java.util.List;
+
 import org.alcobass.films.shared.DictionaryCacheData;
 import org.alcobass.films.shared.beans.CountryBean;
+import org.alcobass.films.shared.beans.DirectorBean;
 import org.alcobass.films.shared.beans.GenreBean;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -16,4 +19,6 @@ public interface FilmService extends RemoteService {
     
     public GenreBean getGenreBeanFake();
     public CountryBean getCountryBeanFake();
+    
+    public List<DirectorBean> getDirectorList();
 }

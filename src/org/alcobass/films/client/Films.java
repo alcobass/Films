@@ -15,8 +15,12 @@ public class Films implements EntryPoint {
     /**
      * Create a remote service proxy to talk to the server-side Greeting service.
      */
-    private final FilmServiceAsync greetingService = GWT.create(FilmService.class);
+    private static final FilmServiceAsync greetingService = GWT.create(FilmService.class);
 
+    public static FilmServiceAsync getService() {
+        return greetingService;
+    }
+    
     /**
      * This is the entry point method.
      */
